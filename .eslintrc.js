@@ -28,6 +28,9 @@ module.exports = {
     'no-array-index-key': 0,
     'no-param-reassign': 0,
     'import/no-cycle': 0,
+    'import/no-extraneous-dependencies': 0,
+    'import/no-named-as-default': 0,
+    'import/no-named-as-default-member': 0,
     'no-console': 0,
     'react/function-component-definition': [
       2,
