@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { type } from '@testing-library/user-event/dist/type';
 
-// const tmdbApiKey = process.env.REACT_APP_TMDB_KEY;
 const tmdbAccessToken = process.env.REACT_APP_TMDB_TOKEN;
-const page = 1;
 
 export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
@@ -11,12 +10,32 @@ export const tmdbApi = createApi({
     headers: { Authorization: `Bearer ${tmdbAccessToken}` },
   }),
   endpoints: (builder) => ({
-    getPopularMovies: builder.query({
-      query: () => `movie/popular?page=${page}`,
+    //* Get Genres
+    getGenres: builder.query({
+      query: () => 'genre/movie/list',
+    }),
+
+    //* Get Movies by [Type]
+    getMovies: builder.query({
+      query: ({ genreIdOrCategoryName, page }) => {
+        //* Get Movies by Genres
+        if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'number') {
+          return `discover/movie?with_genres=${genreIdOrCategoryName}&page=${page}`;
+        }
+
+        //* Get Movies by Categories
+        if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'string') {
+          return `movie/${genreIdOrCategoryName}?page=${page}`;
+        }
+
+        //* Default Get Popular Movies
+        return `movie/popular?page=${page}`;
+      },
     }),
   }),
 });
 
 export const {
-  useGetPopularMoviesQuery,
+  useGetGenresQuery,
+  useGetMoviesQuery,
 } = tmdbApi;
