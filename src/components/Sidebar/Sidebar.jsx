@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
 import { useGetGenresQuery } from '../../services/TMDB';
-import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import { selectGenreOrCategory, currentGenreOrCategorySelector } from '../../features/currentGenreOrCategory';
 
 const categories = [
   { label: 'Popular', value: 'popular' },
@@ -22,7 +22,7 @@ const Sidebar = ({ setMobileOpen }) => {
   const theme = useTheme();
   const styles = useStyles();
   const { data, error, isFetching } = useGetGenresQuery();
-  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
+  const { genreIdOrCategoryName } = useSelector(currentGenreOrCategorySelector);
   const dispatch = useDispatch();
 
   if (error) return 'An error has occurred.';

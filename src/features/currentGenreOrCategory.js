@@ -20,4 +20,7 @@ export const genreOrCategory = createSlice({
 });
 
 export const { selectGenreOrCategory, searchMovie } = genreOrCategory.actions;
+
 export default genreOrCategory.reducer;
+
+export const currentGenreOrCategorySelector = (state) => state.currentGenreOrCategory;
