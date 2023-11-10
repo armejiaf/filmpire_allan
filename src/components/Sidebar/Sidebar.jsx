@@ -20,7 +20,7 @@ const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48
 
 const Sidebar = ({ setMobileOpen }) => {
   const theme = useTheme();
-  const classes = useStyles();
+  const styles = useStyles();
   const { data, error, isFetching } = useGetGenresQuery();
   const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const dispatch = useDispatch();
@@ -29,9 +29,9 @@ const Sidebar = ({ setMobileOpen }) => {
 
   return (
     <>
-      <Link to="/" className={classes.imageLink}>
+      <Link to="/" className={styles.imageLink}>
         <img
-          className={classes.image}
+          className={styles.image}
           src={theme.palette.mode === 'light' ? redLogo : blueLogo}
           alt="Filmpire logo"
         />
@@ -40,10 +40,10 @@ const Sidebar = ({ setMobileOpen }) => {
       <List>
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
-          <Link key={value} className={classes.links} to="/">
+          <Link key={value} className={styles.links} to="/">
             <ListItemButton onClick={() => dispatch(selectGenreOrCategory(value))}>
               <ListItemIcon>
-                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
+                <img src={genreIcons[label.toLowerCase()]} className={styles.genreImages} height={30} />
               </ListItemIcon>
               <ListItemText primary={label} />
             </ListItemButton>
@@ -58,10 +58,10 @@ const Sidebar = ({ setMobileOpen }) => {
             <CircularProgress />
           </Box>
         ) : data.genres.map(({ id, name }) => (
-          <Link key={name} className={classes.links} to="/">
+          <Link key={name} className={styles.links} to="/">
             <ListItemButton onClick={() => dispatch(selectGenreOrCategory(id))}>
               <ListItemIcon>
-                <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
+                <img src={genreIcons[name.toLowerCase()]} className={styles.genreImages} height={30} />
               </ListItemIcon>
               <ListItemText primary={name} />
             </ListItemButton>
