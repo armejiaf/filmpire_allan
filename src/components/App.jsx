@@ -3,6 +3,7 @@ import { CssBaseline } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 
 import useStyles from './styles';
+import 'rsuite/dist/rsuite.min.css';
 
 import { Actors, MovieInformation, Movies, NavBar, Profile } from '.';
 
