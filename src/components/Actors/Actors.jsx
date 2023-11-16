@@ -4,14 +4,17 @@ import { Portrait, ArrowBack } from '@mui/icons-material';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useGetActorQuery } from '../../services/TMDB';
-import { MovieList } from '..';
+import { useGetActorQuery, useGetMovieByActorIdQuery } from '../../services/TMDB';
+import { MovieList, Pagination } from '..';
 import useStyles from './styles';
 
 const Actors = () => {
   const styles = useStyles();
   const { id } = useParams();
+  const [page, setPage] = useState(1);
+
   const { data, isFetching, error } = useGetActorQuery(id);
+  const { data: movies } = useGetMovieByActorIdQuery({ id, page });
 
   if (isFetching) {
     return (
@@ -57,14 +60,13 @@ const Actors = () => {
         </Box>
       </Grid>
       <Box margin="2rem 0">
-        <Typography variant="h2" gutterBottom align="center">
-          Appearances
-        </Typography>
+        <Typography variant="h2" gutterBottom align="center">Appearances</Typography>
         {
-        data?.movie_credits?.cast
-          ? <MovieList movies={{ results: data?.movie_credits?.cast }} numberOfMovies={12} />
-          : <Box>Sorry nothing was found.</Box>
-      }
+          movies
+            ? <MovieList movies={movies} numberOfMovies={12} />
+            : <Box>Sorry nothing was found.</Box>
+        }
+        <Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
       </Box>
     </Grid>
   );
