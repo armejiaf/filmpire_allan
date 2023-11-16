@@ -62,7 +62,7 @@ const MovieInformation = () => {
         <Typography variant="h5" align="center" gutterBottom>
           {data?.tagline}
         </Typography>
-        <Grid item className={styles.containerSpaceAround}>
+        <Grid item className={styles.containerSpaceAround} style={{ flexDirection: 'row' }}>
           <Box display="flex" align="center">
             <Rating readOnly value={data.vote_average / 2} precision={0.1} />
             <Typography variant="subtitle1" gutterBottom style={{ marginLeft: '10px' }}>
@@ -70,7 +70,7 @@ const MovieInformation = () => {
             </Typography>
           </Box>
           <Typography variant="h6" align="center" flexWrap="wrap" gutterBottom>
-            {data?.runtime}min
+            {data?.runtime} minutes
           </Typography>
         </Grid>
         <Grid item className={styles.genresContainer}>
@@ -126,14 +126,14 @@ const MovieInformation = () => {
         <Grid item container style={{ marginTop: '2rem' }}>
           <div className={styles.buttonsContainer}>
             <Grid item xs={12} sm={6} className={styles.buttonsContainer}>
-              <ButtonGroup size="medium" variant="outlined">
+              <ButtonGroup size="medium" variant="outlined" style={{ width: '100%' }}>
                 <Button target="_blank" rel="noopener noreferrer" href={data?.homepage} endIcon={<Language />}>Website</Button>
                 <Button target="_blank" rel="noopener noreferrer" href={`https://www.imdb.com/title/${data?.imdb_id}`} endIcon={<MovieIcon />}>Imdb</Button>
                 <Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>Trailer</Button>
               </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={6} className={styles.buttonsContainer}>
-              <ButtonGroup size="medium" variant="outlined">
+              <ButtonGroup size="medium" variant="outlined" style={{ width: '100%' }}>
                 <Button onClick={addToFavorites} endIcon={isMovieFavorited ? <Favorite /> : <FavoriteBorderOutlined />}>
                   Favorite
                 </Button>

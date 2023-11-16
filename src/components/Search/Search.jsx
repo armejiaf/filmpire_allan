@@ -11,12 +11,17 @@ const Search = () => {
   const [query, setQuery] = useState('');
   const styles = useStyles();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       dispatch(searchMovie(query));
     }
   };
+
+  if (location.pathname !== '/') {
+    return null;
+  }
 
   return (
     <div className={styles.searchContainer}>
