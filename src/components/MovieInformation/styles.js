@@ -63,12 +63,13 @@ export default makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'start',
     width: '100%',
-    margin: '10px 0 !important',
+    marginTop: '10px !important',
+    marginBottom: '2rem !important',
   },
   tag: {
     margin: '0 10px !important',
     border: `1px solid ${theme.palette.mode === 'light' ? 'black' : 'white'}`,
-    backgroundColor: 'white',
+    backgroundColor: theme.palette.mode === 'light' ? 'white' : '#121212',
     color: theme.palette.mode === 'light' ? 'rgba(0, 0, 0, 0.87)' : 'white',
   },
   buttonsContainer: {

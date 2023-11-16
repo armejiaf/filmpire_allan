@@ -114,6 +114,12 @@ const MovieInformation = () => {
           ))}
         </Grid>
         <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
+          Overview
+        </Typography>
+        <Typography style={{ marginBottom: '2rem' }}>
+          {data?.overview}
+        </Typography>
+        <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
           Spoken Languages
         </Typography>
         {data?.spoken_languages.length > 0
@@ -129,12 +135,6 @@ const MovieInformation = () => {
             </TagGroup>
           ) : '' }
         <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
-          Overview
-        </Typography>
-        <Typography style={{ marginBottom: '2rem' }}>
-          {data?.overview}
-        </Typography>
-        <Typography variant="h5" gutterBottom>
           Top Cast
         </Typography>
         <Grid item container spacing={2}>

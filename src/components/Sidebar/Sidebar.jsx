@@ -43,7 +43,7 @@ const Sidebar = ({ setMobileOpen }) => {
           <Link key={value} className={styles.links} to="/">
             <ListItemButton onClick={() => dispatch(selectGenreOrCategory(value))}>
               <ListItemIcon>
-                <img src={genreIcons[label.toLowerCase()]} className={styles.genreImages} height={30} />
+                <img src={genreIcons[label.toLowerCase()]} className={styles.genreImage} height={30} />
               </ListItemIcon>
               <ListItemText primary={label} />
             </ListItemButton>
@@ -61,7 +61,7 @@ const Sidebar = ({ setMobileOpen }) => {
           <Link key={name} className={styles.links} to="/">
             <ListItemButton onClick={() => dispatch(selectGenreOrCategory(id))}>
               <ListItemIcon>
-                <img src={genreIcons[name.toLowerCase()]} className={styles.genreImages} height={30} />
+                <img src={genreIcons[name.toLowerCase()]} className={styles.genreImage} height={30} />
               </ListItemIcon>
               <ListItemText primary={name} />
             </ListItemButton>
