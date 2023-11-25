@@ -100,4 +100,24 @@ export default makeStyles((theme) => ({
       height: '90%',
     },
   },
+  emptyResults: {
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '25px !important',
+  },
+  emptyResultsModal: {
+    backgroundColor: theme.palette.mode === 'light' ? 'white' : 'black',
+    width: '50%',
+    height: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '25px !important',
+    border: 'none',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%',
+      height: '90%',
+      fontSize: '15px !important',
+    },
+  },
 }));

@@ -29,9 +29,16 @@ export default makeStyles((theme) => ({
     width: drawerWidth,
   },
   linkButton: {
+    textDecoration: 'none !important',
     '&:hover': {
       color: 'white !important',
       textDecoration: 'none !important',
+    },
+    '&:active': {
+      color: 'white !important',
+    },
+    '&:focus': {
+      color: 'white !important',
     },
   },
 }));

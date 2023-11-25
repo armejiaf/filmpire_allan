@@ -27,6 +27,10 @@ const Sidebar = ({ setMobileOpen }) => {
 
   if (error) return 'An error has occurred.';
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [genreIdOrCategoryName]);
+
   return (
     <>
       <Link to="/" className={styles.imageLink}>

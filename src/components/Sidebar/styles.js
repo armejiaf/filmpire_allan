@@ -12,6 +12,15 @@ export default makeStyles((theme) => ({
   links: {
     color: theme.palette.text.primary,
     textDecoration: 'none !important',
+    '&:hover': {
+      color: theme.palette.text.primary,
+    },
+    '&:active': {
+      color: theme.palette.text.primary,
+    },
+    '&:focus': {
+      color: theme.palette.text.primary,
+    },
   },
   genreImage: {
     filter: theme.palette.mode === 'dark' && 'invert(1)',

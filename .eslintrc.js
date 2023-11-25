@@ -25,6 +25,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'default-param-last': 0,
     'no-array-index-key': 0,
     'no-param-reassign': 0,
     'import/no-cycle': 0,

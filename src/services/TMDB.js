@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { type } from '@testing-library/user-event/dist/type';
 
 const tmdbAccessToken = process.env.REACT_APP_TMDB_TOKEN;
 

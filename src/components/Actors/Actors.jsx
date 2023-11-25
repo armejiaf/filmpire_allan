@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Typography, Button, ButtonGroup, Grid, Box, CircularProgress, useMediaQuery, Rating } from '@mui/material';
+import { Typography, Button, Grid, Box, CircularProgress } from '@mui/material';
 import { Portrait, ArrowBack } from '@mui/icons-material';
-import { Link, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import { useGetActorQuery, useGetMovieByActorIdQuery } from '../../services/TMDB';
 import { MovieList, Pagination } from '..';
@@ -12,6 +11,7 @@ const Actors = () => {
   const styles = useStyles();
   const { id } = useParams();
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const { data, isFetching, error } = useGetActorQuery(id);
   const { data: movies } = useGetMovieByActorIdQuery({ id, page });
@@ -36,7 +36,7 @@ const Actors = () => {
       <Grid item lg={5} xl={4}>
         <img
           className={styles.image}
-          src={`https://image.tmdb.org/t/p/w780/${data?.profile_path}`}
+          src={data?.profile_path ? `https://image.tmdb.org/t/p/w780/${data?.profile_path}` : 'https://serviscommerce.me/files/images/no.png'}
           alt={data?.name}
         />
       </Grid>
@@ -52,8 +52,8 @@ const Actors = () => {
         </Typography>
         <Box marginTop="2rem" display="flex" justifyContent="space-around">
           <Button variant="contained" color="primary" target="_blank" rel="noopener noreferrer" href={`https://www.imdb.com/name/${data?.imdb_id}`} startIcon={<Portrait />}>Imdb</Button>
-          <Button startIcon={<ArrowBack />} color="primary">
-            <Typography style={{ textDecoration: 'none' }} component={Link} to="/" color="inherit" variant="subtitle2">
+          <Button startIcon={<ArrowBack />} sx={{ borderColor: 'primary.main' }} variant="outlined" onClick={() => navigate(-1)}>
+            <Typography style={{ textDecoration: 'none' }} color="inherit" variant="subtitle2">
               Back
             </Typography>
           </Button>
